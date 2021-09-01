@@ -38,6 +38,7 @@ class InfoPanel {
             return;
         }
         const newUsers = this.activeConversation.users.concat(this.$input.value);
+        this.$input.value = '';
         db.collection('conversations').doc(this.activeConversation.id).update({
             users: newUsers,
         });
