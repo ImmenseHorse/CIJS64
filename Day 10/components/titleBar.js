@@ -2,19 +2,33 @@ class TitleBar {
     $container;
     $txtName;
     $btnLogout;
+    $btnShowSidebar;
 
-    constructor() {
+    setSidebarVisible;
+
+    constructor(setSidebarVisible) {
+        this.setSidebarVisible = setSidebarVisible;
+
         this.$container = document.createElement('div');
         this.$container.classList.add('title-bar');
 
         this.$txtName = document.createElement('div');
 
-        this.$btnLogout = document.createElement('button');
-        this.$btnLogout.innerHTML = "Logout";
+        this.$btnShowSidebar = document.createElement('div');
+        this.$btnShowSidebar.classList.add("btn-show-sidebar");
+        this.$btnShowSidebar.innerHTML = "📚";
+        this.$btnShowSidebar.addEventListener('click', this.showSideBar);
 
+        this.$btnLogout = document.createElement('button');
+        this.$btnLogout.classList.add("btn", 'btn-secondary');
+        this.$btnLogout.innerHTML = "Log out!";
         this.$btnLogout.addEventListener("click", this.handleLogout);
     }
 
+    showSideBar = () => {
+
+
+    }
     handleLogout = () => {
         firebase.auth().signOut();
     };
@@ -24,7 +38,12 @@ class TitleBar {
     }
 
     render() {
-        this.$container.appendChild(this.$txtName);
+        const title = document.createElement('div');
+        title.classList.add('flex');
+        title.appendChild(this.$btnShowSidebar);
+        title.appendChild(this.$txtName);
+
+        this.$container.appendChild(title);
         this.$container.appendChild(this.$btnLogout);
 
         return this.$container;

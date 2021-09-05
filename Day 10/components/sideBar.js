@@ -12,8 +12,9 @@ class SideBar {
     activeConversation;
 
     constructor(setActiveConversation, updateActiveConversation) {
-        this.$container = document.createElement("div");
-        this.$container.classList.add('sidebar');
+        this.$bgContainer = document.createElement("div");
+        this.$bgContainer.classList.add('sidebar-container');
+        this.$bgContainer.addEventListener('click', )
 
         this.$btnCreateConversation = document.createElement('button');
         this.$btnCreateConversation.innerHTML = "+ New";
@@ -77,6 +78,12 @@ class SideBar {
             }
         })
 
+    }
+
+    setBgContainerVisible = (visible) => {
+        if (visible) {
+            this.$bgContainer.classList
+        }
     }
 
     render() {

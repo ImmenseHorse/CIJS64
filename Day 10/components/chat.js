@@ -18,7 +18,7 @@ class Chat {
         this.$sideBar = new SideBar(
             this.setActiveConversation,
             this.updateActiveConversation);
-        this.$titleBar = new TitleBar();
+        this.$titleBar = new TitleBar(this.$setSidebar);
         this.$messageArea = new MessageArea();
         this.$infoPanel = new InfoPanel();
 
@@ -35,6 +35,10 @@ class Chat {
 
     updateActiveConversation = (name, users) => {
         this.$infoPanel.updateActiveConversation(name, users);
+    }
+
+    setSidebarVisible = (visible) => {
+        this.$sideBar.setBgContainerVisible(visible);
     }
 
     render() {
